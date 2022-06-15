@@ -47,6 +47,11 @@ const routes = [
         name: 'Xx',
         path: '/Xx',
         component: Xx
+      },
+      {
+        name: 'Workbench',
+        path: '/Workbench',
+        component: () => import('@/components/Workbench.vue')
       }
     ]
   }
@@ -58,7 +63,7 @@ const router = createRouter({
 })
 //全局前置路由守卫————初始化的时候被调用、每次路由切换之前被调用
 router.beforeEach((to, from, next) => {
-  console.log('前置路由守卫', to, from)
+  // console.log('前置路由守卫', to, from)
   if (to.meta.isAuth) { //判断是否需要鉴权
     if (localStorage.getItem('name') === 'wwwwwwww') {
       next()
@@ -71,8 +76,8 @@ router.beforeEach((to, from, next) => {
 })
 
 //全局后置路由守卫————初始化的时候被调用、每次路由切换之后被调用
-router.afterEach((to, from) => {
-  console.log('后置路由守卫', to, from)
+router.afterEach((to) => {
+  // console.log('后置路由守卫', to, from)
   document.title = to.meta.title || '后台管理系统'
 })
 

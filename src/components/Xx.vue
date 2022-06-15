@@ -1,15 +1,13 @@
 <template>
-  <div id="main"></div>
+  <div ref="chart" style="width:100%;height:376px"></div>
 </template>
-<!-- <script>
-import * as echarts from 'echarts';
-export default {
-  setup() {
-    var chartDom = document.getElementById('main');
-    var myChart = echarts.init(chartDom);
-    var option;
+<script>
 
-    option = {
+export default {
+  mounted() {
+    const chart = this.$refs.chart
+    const myChart = this.$echarts.init(chart);
+    const option = {
       xAxis: {
         type: 'category',
         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -24,7 +22,10 @@ export default {
         }
       ]
     };
-    option && myChart.setOption(option);
-  }
+    option && myChart.setOption(option)
+    window.addEventListener("resize", function () {
+      myChart.resize()
+    })
+  },
 }
-</script> -->
+</script>

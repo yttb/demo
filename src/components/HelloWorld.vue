@@ -8,7 +8,9 @@
         </template>
       </el-menu-item>
       <el-menu-item index="2">
-        <template #title>我的工作台</template>
+        <template #title>
+          <router-link to="/Workbench">我的工作台</router-link>
+        </template>
       </el-menu-item>
       <el-menu-item index="3">
         <template #title>
@@ -18,6 +20,11 @@
       <el-menu-item index="4">
         <template #title>
           <router-link to="/Order"> 订单管理</router-link>
+        </template>
+      </el-menu-item>
+      <el-menu-item index="5" style="margin-left: 1200px;">
+        <template #title>
+          <span @click="TC()"> 退出</span>
         </template>
       </el-menu-item>
     </el-menu>
@@ -53,6 +60,12 @@ export default {
       // console.log(this.$refs.)
       // console.log(this.count1.name)
       // this.$mysay('ssk')
+    },
+    TC() {
+      this.$router.push({
+        name: 'login',
+        path: '/login'
+      })
     }
   },
 }
